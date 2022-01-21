@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <h3>Account Management</h3>
+    <form class="example" th:action="@{/search}">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <a th:href="@{/create}" type="button" class="btn btn-success">Add Account</a>
+    <table class="table table-condensed">
+        <tr>
+            <th>#</th>
+            <th>Account</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Avatar</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="a,loop:${accounts}">
+            <td th:text="${loop.count}"></td>
+            <td th:text="${a.account}"></td>
+            <td th:text="${a.fullName}"></td>
+            <td th:text="${a.phone}"></td>
+            <td th:text="${a.email}"></td>
+            <td><img th:src="${a.avatar}" width="150" height="200"></td>
+            <td th:text="${a.role.roleName}"></td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${a.id})}" type="button" class="btn btn-primary">Edit</a>
+                <a th:href="@{/delete/{id}(id=${a.id})}" type="button" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

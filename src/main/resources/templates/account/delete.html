@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form th:action="@{/delete}" th:object="${account}" method="post">
+    <fieldset>
+        <h3>Delete Account</h3>
+        <h4>Are you sure to delete the account?</h4>
+        <input hidden type="text" id="id" th:field="*{id}">
+        <label style="font-weight: bold "> Id: </label>
+        <label th:text="*{id}"></label><br>
+        <label style="font-weight: bold "> Account: </label>
+        <label th:text="*{account}"></label><br>
+        <label style="font-weight: bold "> Password: </label>
+        <label th:text="*{password}"></label><br>
+        <label style="font-weight: bold "> Full Name: </label>
+        <label th:text="*{fullName}"></label><br>
+        <label style="font-weight: bold "> Phone: </label>
+        <label th:text="*{phone}"></label><br>
+        <label style="font-weight: bold "> Email: </label>
+        <label th:text="*{email}"></label><br>
+        <label style="font-weight: bold "> Avatar: </label>
+        <img th:src="*{avatar}"><br>
+        <label style="font-weight: bold "> Role: </label>
+        <label th:text="*{role.roleName}"></label><br>
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a th:href="@{/accounts}" type="button" class="btn btn-default">Back</a>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <h3>Edit Account </h3>
+    <form th:action="@{/update}" th:object="${account}"  method="post" novalidate="novalidate" enctype="multipart/form-data">
+        <div hidden class="form-group" >
+            <label for="account">Id:</label>
+            <input type="text" class="form-control" id="id" placeholder="Enter id" th:field="*{id}">
+                        <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></span>
+        </div>
+        <div class="form-group" >
+            <label for="account">Account:</label>
+            <input type="text" class="form-control" id="account" placeholder="Enter account" th:field="*{account}">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></span>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter password" th:field="*{password}">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </div>
+        <div class="form-group" >
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Enter fullName" th:field="*{fullName}">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+        </div>
+        <div class="form-group" >
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter phone" th:field="*{phone}">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+        </div>
+        <div class="form-group" >
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email" th:field="*{email}">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="form-group">
+            <label for="sel1">Role:</label>
+            <select class="form-control" id="sel1" th:field="*{role}">
+                <option th:each="r:${roles}" th:value="${r.id}" th:text="${r.roleName}"></option>
+            </select>
+        </div>
+        <div class="form-group" >
+            <label for="avatar">Avatar:</label>
+            <img th:src="*{avatar}" width="150" height="200">
+            <input type="file" class="form-control" id="avatar" placeholder="Enter avatar" name="avatarUpload">
+            <span style="color: darkred; text-align: center" th:if="${#fields.hasErrors('avatar')}" th:errors="*{avatar}"></span>
+        </div>
+        <button type="submit" class="btn btn-default">Update</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <h3>Search Result</h3>
+    <table class="table table-condensed">
+        <tr>
+            <th>#</th>
+            <th>Account</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Avatar</th>
+            <th>Role</th>
+        </tr>
+        <tr th:each="s,loop:${searchResult}">
+            <td th:text="${loop.count}"></td>
+            <td th:text="${s.account}"></td>
+            <td th:text="${s.fullName}"></td>
+            <td th:text="${s.phone}"></td>
+            <td th:text="${s.email}"></td>
+            <td><img th:src="${s.avatar}" width="150" height="200"></td>
+            <td th:text="${s.role.roleName}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
